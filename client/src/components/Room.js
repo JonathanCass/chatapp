@@ -7,12 +7,12 @@ const styles={
 
 }
 
-class Chatroom extends Component {
+class Room extends Component {
     constructor() {
         super()
         this.state={
             message:'',
-            color:'black',
+            color:'#000000',
             font:'Serif',
             size:'14'
         }
