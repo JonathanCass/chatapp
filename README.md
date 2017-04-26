@@ -1,6 +1,5 @@
-Assignment Create a Chat Room.  
+Assignment Create a Chat Room with:    
 
-With Usernames, timestamps, and avatars.  
-The ability to change font size,color and type.  
-
+Usernames, timestamps, and avatars.  
+Ability to change font size,color and type.  
 Multitple rooms and private messaging.  
