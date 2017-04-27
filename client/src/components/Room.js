@@ -3,16 +3,37 @@ import {connect} from 'react-redux'
 import moment from 'moment'
 import {addMessage} from '../api/messaging'
 
-const styles={
-    messagesContainer:{
-        width: 800,
-        height: 400,
-        border: '2px solid black'
+const styles = {
+    entry: {
+        display:'flex'
     },
-    messageContainer:{
-        width: 700,
-        height: 50
-    }
+    room: {
+        position:'relative',
+        height:'100%'
+    },
+    messagesContainer: {
+        position:'absolute',
+        top:0,
+        bottom:100,
+        overflow:'auto',
+        width:'100%'
+    },
+    inputContainer: {
+        position:'absolute',
+        textAlign:'center',
+        bottom:0,
+        height:50,
+        width:'100%',
+        background:'#ddd'
+    },
+    textEntry: {
+        width:'95%',
+        height:30,
+        lineHeight:30,
+        fontSize:16,
+        outline:0,
+        border: '2px solid #777',
+    },
 }
 class Room extends Component {
     constructor() {
@@ -21,7 +42,7 @@ class Room extends Component {
             message:'',
             color:'#000000',
             font:'Serif',
-            size:'14'
+            size: 14
         }
     }
     handleChange = (e) => {
@@ -37,7 +58,7 @@ class Room extends Component {
             message: this.state.message,
             color: this.state.color,
             font: this.state.font,
-            fontSize: this.state.fontSize  
+            size: Number(this.state.size)  
         })
         this.setState({     //Clears message after entering
             message: ''
@@ -59,21 +80,20 @@ class Room extends Component {
         }
     }
     render(){
-        console.log("Props Messages array",this.props.messages, "Props User", this.props.username)
         return(
             <div style={styles.roomContainer}>
                 
                 <div style={styles.messagesContainer} ref='messages'>
                     <ul style={styles.messages}>
                         {this.props.messages.map((entry)=>(
-                            <li style={styles.entry}>
+                            <li style={styles.entry} key={Math.random()}>
                                 <div style={styles.avatar}>A</div>
                                 <div style={styles.messageContainer}>
                                     <div style={styles.timeName}>
                                         <span style={styles.name}>{entry.username}</span>
                                         <span style={styles.time}>{entry.time}</span>
                                     </div>
-                                    <div style={{color: entry.color, fontFamily: entry.font, fontSize:Number(entry.size)}}>
+                                    <div style={{color: entry.color, fontFamily: entry.font, fontSize: entry.size }}>
                                         {entry.message}
                                     </div>    
                                 </div>
@@ -94,9 +114,10 @@ class Room extends Component {
                             <option value="Orbitron">Orbitron</option>
                         </select>
                         <select style={styles.sizeEntry} onChange={this.handleChange} name='size'>
-                            <option value="12">12</option>
-                            <option value="14">14</option>
-                            <option value="16">16</option>
+                            <option value={14}>14</option>
+                            <option value={16}>16</option>
+                            <option value={18}>18</option>
+                            <option value={20}>20</option>
                         </select>
                     </form>
                 </div>

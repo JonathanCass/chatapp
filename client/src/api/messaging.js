@@ -5,7 +5,6 @@ const socket = io.connect('http://localhost:3000')
 
 export function addMessage(message) {
     socket.emit('newMessage', message)
-    console.log("Message in api sent")
 }
 
 export function login(username) {
