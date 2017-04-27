@@ -4,8 +4,20 @@ import moment from 'moment'
 import {addMessage} from '../api/messaging'
 
 const styles = {
+    avatar:{
+        background: 'red',
+        borderRadius: 10,
+        width: 20,
+        height: 20,
+        color: 'white',
+        textAlign: 'center',
+        lineHeight: '22px',
+        marginRight: 10
+    },
     entry: {
-        display:'flex'
+        display:'flex',
+        border: '1px solid grey',
+        borderWidth: '0 0 1px 0'
     },
     room: {
         position:'relative',
@@ -16,24 +28,48 @@ const styles = {
         top:0,
         bottom:100,
         overflow:'auto',
-        width:'100%'
+        width:'95%',
     },
     inputContainer: {
         position:'absolute',
         textAlign:'center',
         bottom:0,
-        height:50,
+        height:60,
         width:'100%',
-        background:'#ddd'
+        border: '2px solid red',
+        borderRadius: 5,
+        background: 'black',
+        padding: 10
     },
     textEntry: {
-        width:'95%',
+        width:'85%',
         height:30,
-        lineHeight:30,
+        lineHeight:'30px',
         fontSize:16,
         outline:0,
         border: '2px solid #777',
     },
+    timeName:{
+        display: 'inline-block'
+    },
+    name:{
+        marginRight: 10
+    },
+    time:{
+       position: 'absolute',
+       right: 0,
+       display: 'inline-block',
+       lineHeight: '26px',
+    },
+    sizeEntry:{
+        height:30,
+    },
+    fontEntry:{
+        height:30,
+    },
+    colorEntry:{
+        height:30,
+    }
 }
 class Room extends Component {
     constructor() {
@@ -42,7 +78,7 @@ class Room extends Component {
             message:'',
             color:'#000000',
             font:'Serif',
-            size: 14
+            size: 18
         }
     }
     handleChange = (e) => {
@@ -83,25 +119,6 @@ class Room extends Component {
         return(
             <div style={styles.roomContainer}>
                 
-                <div style={styles.messagesContainer} ref='messages'>
-                    <ul style={styles.messages}>
-                        {this.props.messages.map((entry)=>(
-                            <li style={styles.entry} key={Math.random()}>
-                                <div style={styles.avatar}>A</div>
-                                <div style={styles.messageContainer}>
-                                    <div style={styles.timeName}>
-                                        <span style={styles.name}>{entry.username}</span>
-                                        <span style={styles.time}>{entry.time}</span>
-                                    </div>
-                                    <div style={{color: entry.color, fontFamily: entry.font, fontSize: entry.size }}>
-                                        {entry.message}
-                                    </div>    
-                                </div>
-                            </li>
-                        ))}
-                    </ul>    
-                </div>
-               
                 <div style={styles.inputContainer}>
                     <form onSubmit={this.handleSubmit}>
                         <input style={styles.textEntry} onChange={this.handleChange} name='message' type='text' placeholder='Input Message' value={this.state.message} /> 
@@ -120,6 +137,26 @@ class Room extends Component {
                             <option value={20}>20</option>
                         </select>
                     </form>
+                </div>
+                
+                <div style={styles.messagesContainer} ref='messages'>
+                    <ul style={styles.messages}>
+                        {this.props.messages.map((entry)=>(
+                            <li style={styles.entry} key={Math.random()}>
+                                <div style={styles.avatar}>A</div>
+                                <div style={styles.messageContainer}>
+                                    <div style={styles.timeName}>
+                                        <span style={styles.name}>{entry.username + ":" }</span>
+                                        <span style={{color: entry.color, fontFamily: entry.font, fontSize: entry.size }}>
+                                            {entry.message}
+                                        </span>
+                                        <div style={styles.time}>{entry.time}</div> 
+                                    </div>
+                                    
+                                </div>
+                            </li>
+                        ))}
+                    </ul>    
                 </div>
 
             </div>
