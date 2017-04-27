@@ -10,8 +10,8 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 })); 
 
 io.on('connection', function(socket){
-    socket.on('new message', function(message){
-        io.emit('new message', message)
+    socket.on('newMessage', function(message){
+        io.emit('newMessage', message)
     })
 })
 

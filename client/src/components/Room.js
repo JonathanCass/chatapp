@@ -4,36 +4,16 @@ import moment from 'moment'
 import {addMessage} from '../api/messaging'
 
 const styles={
-    entry: {
-        display: 'flex'
-    },
-    roomContainer:{
-        position: 'relative',
-        height: '100%'
-    },
     messagesContainer:{
-        position: 'absolute',
-        top:0,
-        bottom: 100,
-        overflow: 'auto',
-        width: '100%',
-        background: 'green'
+        width: 800,
+        height: 400,
+        border: '2px solid black'
     },
-    inputContainer:{
-        position:'absolute',
-        textAlign:'center',
-        height:60,
-        width:'100%',
-        background:'#ddd',
-        top: 100
-    },
-    textEntry:{
-        width: '95%',
-        height: 40,
-        lineHeight: 42,
+    messageContainer:{
+        width: 700,
+        height: 50
     }
 }
-
 class Room extends Component {
     constructor() {
         super()
@@ -79,6 +59,7 @@ class Room extends Component {
         }
     }
     render(){
+        console.log("Props Messages array",this.props.messages, "Props User", this.props.username)
         return(
             <div style={styles.roomContainer}>
                 
