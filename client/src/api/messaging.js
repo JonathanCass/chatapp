@@ -7,10 +7,12 @@ export function addMessage(message) {
     socket.emit('newMessage', message)
 }
 
-export function login(username) {
+export function login(name, icon, color) {
     store.dispatch({
         type: 'LOGIN',
-        username : username
+        name: name,
+        icon: icon,
+        color: color
     })
 }
 

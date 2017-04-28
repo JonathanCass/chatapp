@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import moment from 'moment'
 import {addMessage} from '../api/messaging'
 import styles from './Room.styles'
+import 'font-awesome/css/font-awesome.css'
 
 class Room extends Component {
     constructor() {
@@ -23,7 +24,7 @@ class Room extends Component {
     handleSubmit = (e) => {
         e.preventDefault()
         addMessage({
-            username: this.props.username,
+            username: this.props.user.name,
             time: moment().format('LTS'),
             message: this.state.message,
             color: this.state.color,
@@ -35,7 +36,7 @@ class Room extends Component {
         })
     }
     componentWillMount() {  //If username is not set redirects to login page
-        if (!this.props.username) {
+        if (!this.props.user.name) {
             this.props.history.push('/')
         }
     }
@@ -50,6 +51,7 @@ class Room extends Component {
         }
     }
     render(){
+        console.log(this.props.user)
         return(
             <div style={styles.roomContainer}>
                 
@@ -77,7 +79,7 @@ class Room extends Component {
                     <ul style={styles.messages}>
                         {this.props.messages.map((entry)=>(
                             <li style={styles.entry} key={Math.random()}>
-                                <div style={styles.avatar}>A</div>
+                                <div style={styles.avatar}><i style={{color:this.props.user.color,fontSize: 32}} className={'fa fa-'+this.props.user.icon} aria-hidden="true"></i></div>
                                 <div style={styles.messageContainer}>
                                     <div style={styles.timeName}>
                                         <span style={styles.name}>{entry.username + ":" }</span>
@@ -99,7 +101,7 @@ class Room extends Component {
 }
 function mapStateToProps(appState) {
     return {
-        messages: appState.messages, username: appState.username
+        messages: appState.messages, user: appState.user
     }
 }
 

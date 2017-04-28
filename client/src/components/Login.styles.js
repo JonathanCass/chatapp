@@ -51,7 +51,10 @@ const styles = {
         border: '2px solid black',
         marginLeft: 20,
         borderRadius: 25,
-        background: 'blue'
+        background: 'blue',
+        display:'inline-block',
+        lineHeight: '48px',
+        textAlign: 'center'
     },
     anchor:{
         textDecoration: 'none',

@@ -1,11 +1,9 @@
 
 const styles = {
     avatar:{
-        background: 'red',
         borderRadius: 10,
         width: 20,
         height: 20,
-        color: 'white',
         textAlign: 'center',
         lineHeight: '22px',
         marginRight: 10
