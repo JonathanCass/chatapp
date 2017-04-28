@@ -11,7 +11,8 @@ const styles = {
     entry: {
         display:'flex',
         border: '1px solid grey',
-        borderWidth: '0 0 1px 0'
+        borderWidth: '0 0 1px 0',
+        lineHeight: '32px',
     },
     room: {
         position:'relative',
@@ -44,7 +45,9 @@ const styles = {
         border: '2px solid #777',
     },
     timeName:{
-        display: 'inline-block'
+        display: 'inline-block',
+        height: 30,
+        lineHeight: '32px'
     },
     name:{
         marginRight: 10
@@ -53,7 +56,7 @@ const styles = {
        position: 'absolute',
        right: 0,
        display: 'inline-block',
-       lineHeight: '26px',
+       lineHeight: '32px',
     },
     sizeEntry:{
         height:30,

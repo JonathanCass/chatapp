@@ -70,6 +70,14 @@ const styles = {
         position: 'relative',
         right: 50,
         top: 12
+    },
+    submitUser:{
+        height: 50,
+        display: 'block',
+        width: 300,
+        fontSize: 30,
+        marginLeft: 480,
+        borderRadius: 10
     }
 }
 

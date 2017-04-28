@@ -51,7 +51,6 @@ class Room extends Component {
         }
     }
     render(){
-        console.log(this.props.user)
         return(
             <div style={styles.roomContainer}>
                 
@@ -79,7 +78,7 @@ class Room extends Component {
                     <ul style={styles.messages}>
                         {this.props.messages.map((entry)=>(
                             <li style={styles.entry} key={Math.random()}>
-                                <div style={styles.avatar}><i style={{color:this.props.user.color,fontSize: 32}} className={'fa fa-'+this.props.user.icon} aria-hidden="true"></i></div>
+                                <div style={styles.avatar}><i style={{color:this.props.user.color,fontSize: 24,WebkitTextStroke:'1px black',lineHeight:'32px'}} className={'fa fa-'+this.props.user.icon} aria-hidden="true"></i></div>
                                 <div style={styles.messageContainer}>
                                     <div style={styles.timeName}>
                                         <span style={styles.name}>{entry.username + ":" }</span>
